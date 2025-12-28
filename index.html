@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRF 내규 AI 컨설턴트 - NRF AtoZ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+        :root {
+            --nrf-blue: #005eb8;
+            --nrf-deep: #004080;
+            --text-main: #111111;
+            --text-sub: #555555;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- 헤더 수정 --- */
+        header {
+            width: 100%;
+            height: 100px; /* 로고가 커짐에 따라 헤더 높이를 80px -> 100px로 조정 */
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 80px; /* 로고 크기를 40px에서 80px로 확대 */
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* --- 메인 컨텐츠 --- */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 160px 20px 80px; /* 헤더가 높아진 만큼 상단 패딩 조절 */
+            background: radial-gradient(circle at 50% 30%, #f0f7ff 0%, #ffffff 70%);
+        }
+
+        .sub-badge {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--nrf-blue);
+            background-color: rgba(0, 94, 184, 0.08);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            letter-spacing: -0.2px;
+            display: inline-block;
+        }
+
+        .main-title {
+            font-size: 130px;
+            font-weight: 900;
+            margin: 0 0 50px 0;
+            letter-spacing: -6px;
+            line-height: 1;
+            background: linear-gradient(135deg, #1a1a1a 30%, #005eb8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .keyword-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 60px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .keyword-group::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tag {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4b5563;
+            background-color: var(--white);
+            padding: 12px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 94, 184, 0.15);
+            color: var(--nrf-blue);
+            border-color: rgba(0, 94, 184, 0.2);
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--nrf-blue) 0%, var(--nrf-deep) 100%);
+            color: var(--white);
+            font-size: 22px;
+            font-weight: 700;
+            padding: 22px 70px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 94, 184, 0.3);
+            letter-spacing: -0.5px;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 94, 184, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .info-bar {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: #f1f3f5;
+            border-radius: 4px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #888;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-title { font-size: 100px; }
+        }
+
+        @media (max-width: 768px) {
+            header { height: 80px; padding: 0 20px; }
+            .logo-img { height: 45px; } /* 모바일에서는 적절한 크기로 재조정 */
+            .main-title { font-size: 60px; letter-spacing: -3px; }
+            .keyword-group { flex-wrap: wrap; padding: 0 20px; } 
+            .btn-main { padding: 18px 50px; font-size: 18px; width: 80%; box-sizing: border-box; }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-link">
+            <img src="NRF.JPG" alt="NRF 한국연구재단 로고" class="logo-img">
+        </a>
+    </header>
+
+    <div class="main-container">
+        <div class="sub-badge fade-in-up">NRF 내규 AI 컨설턴트</div>
+        <h1 class="main-title fade-in-up delay-1">NRF AtoZ</h1>
+        <div class="keyword-group fade-in-up delay-2">
+            <div class="tag">인사·채용</div>
+            <div class="tag">보수·급여</div>
+            <div class="tag">복무관리</div>
+            <div class="tag">예산집행</div>
+            <div class="tag">여비·출장</div>
+            <div class="tag">교육훈련</div>
+            <div class="tag">회계처리</div>
+        </div>
+        <div class="fade-in-up delay-3" style="width: 100%;">
+            <a href="https://notebooklm.google.com/notebook/54bf74c1-f275-43aa-b816-72bcc46cf04f" class="btn-main">
+                컨설팅 시작하기
+            </a>
+        </div>
+        <div class="info-bar fade-in-up delay-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>본 서비스는 AI 기반 도구입니다. 정확한 해석은 담당자와 상의하세요.</span>
+        </div>
+    </div>
+
+    <footer>
+        <span class="footer-logo">NRF 한국연구재단</span>
+        (34113) 대전광역시 유성구 가정로 201 <br>
+        Copyright © National Research Foundation of Korea. All rights reserved.
+    </footer>
+
+</body>
+</html>
